@@ -2,6 +2,8 @@ package fr.jojo.generateur;
 
 import java.util.Random;
 
+import fr.jojo.generateur.data.Beneficiaire;
+
 /**
  * Identifiant NIR :
  * Ce numéro est composé de 13 chiffres : le sexe (1 chiffre), 
@@ -20,17 +22,60 @@ public class GenerateurIndividu {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		GenerateurIndividu generator = new GenerateurIndividu();
-		System.out.println("Sexe" + generator.genererSexe());
-		System.out.println("Annee" + generator.genererAnnee());
-		System.out.println("Mois" + generator.genererMois());
-		System.out.println("Departement" + generator.genererDepartement());
-		System.out.println("Commune" + generator.genererCommune());
+		System.out.println("nir" 	+ generator.genererSexe()
+									+ generator.genererAnnee()
+									+ generator.genererMois()
+									+ generator.genererDepartement()
+									+ generator.genererCommune()
+									+ generator.genererOrdre());
 //		Object[] number = new Object[1];
 //		number[0] = new Integer(1);
 //		System.out.println(String.format ("%02d", number));
 		//String formattedString = String.format("Order with OrdId : %d and Amount: %d is missing", 40021, 3000);  
 	}
 
+	/**
+	 * Fabriquer un individu
+	 */
+	protected Beneficiaire createIndividu() {
+		GenerateurIndividu generator = new GenerateurIndividu();
+		Beneficiaire ben = new Beneficiaire();
+		
+		// Génération des valeurs
+		int sexe 	= generator.genererSexe();
+		String annee 	= generator.genererAnnee();
+		String mois		= generator.genererMois();
+		String jour		= generator.genererJour();
+		String dep		= generator.genererDepartement();
+		String commune	= generator.genererCommune();
+		String ordre	= generator.genererOrdre();
+		
+		String nir 		= sexe + annee + mois + dep + commune + ordre;
+		
+		// Identifiant 
+		ben.setNir(nir);
+		
+		// Date de naissance
+		int iAnnee = (new Integer(annee)).intValue();
+		if (iAnnee > 10) {
+			ben.setDtn(jour+mois+"19"+annee);
+		} else {
+			ben.setDtn(jour+mois+"20"+annee);
+		}
+		// nom
+		
+		// prenom
+		
+		// qualité
+		
+		// sexe
+		if (sexe == 1) {
+			ben.setSexe("M");
+		} else if (sexe == 2) {
+			ben.setSexe("F");
+		}
+		return ben;
+	}
 	/**
 	 * Cette méthode génère aléatoirement le sexe d'un individu
 	 * sexe 1 = Homme ou 2 = Femme
@@ -50,6 +95,19 @@ public class GenerateurIndividu {
 		
 		Object[] number = new Object[1];
 		number[0] = new Integer(rand.nextInt(100));
+		return String.format ("%02d", number);
+
+	}
+	
+	/**
+	 * Mois de naissance
+	 */
+	protected String genererJour() {
+		Random rand = new Random();
+
+		
+		Object[] number = new Object[1];
+		number[0] = new Integer(rand.nextInt(30)+1);
 		return String.format ("%02d", number);
 
 	}

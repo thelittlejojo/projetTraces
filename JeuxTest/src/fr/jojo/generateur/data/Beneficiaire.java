@@ -10,7 +10,7 @@ public class Beneficiaire {
 	/** identifiant unique de l'individu */
 	protected String nir;
 	/** Date de naissance */
-	protected Date dtn;
+	protected String dtn;
 	/** qualité du bénéficiaire : Assuré, Conjoint, Conjoint séparé, ...*/
 	protected String qualite;
 	/** Sexe de l'individu : Homme/Femme */
@@ -34,10 +34,10 @@ public class Beneficiaire {
 	public void setNir(String nir) {
 		this.nir = nir;
 	}
-	public Date getDtn() {
+	public String getDtn() {
 		return dtn;
 	}
-	public void setDtn(Date dtn) {
+	public void setDtn(String dtn) {
 		this.dtn = dtn;
 	}
 	public String getQualite() {
