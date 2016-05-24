@@ -1,22 +1,38 @@
 <!DOCTYPE html>
-<html lang="fr" ng-app="viewStat">
+<html lang="fr" ng-app="">
   <head>
     <meta charset="utf-8">
   </head>
 
   <body>
 
-    <div nb-controller="viewStatCtrl">
-		<h2>test angular</h2>
+    <div nb-controller="viewStatCtrl" ng-init="names=['Jani','Hege','Kai']">
+		<h2>test angular {{ text }}</h2>
+		
+		
+		<p>Name: <input type="text" ng-model="name"></p>
+		<p>You wrote: {{ name }}</p> 
 		
 		<div ng-repeat="student in students">{{student.prenom + ' ' + student.nom}}</div>
-	</div>
-     
+		
+    	
+    	<li ng-repeat="x in names">
+      	{{ x }}
+    	</li>
 
+	</div>
+	<div ng-controller="MainCtrl">
+        <h2>{{title}}</h2>
+        <ul>
+            <li ng-repeat="user in users">
+                <div>Nom: {{user.name}}</div>
+                <div>Age: {{user.age}}</div>
+            </li>
+        </ul>
+    </div>
     <script src="./libs/angular/angular.js"></script>
     <script src="./libs/angular/angular-route.js"></script>
     <script src="./js/apps.js"></script>
-	<script src="./js/controleurs/viewStatCtrl.js"></script>
-
+	<!--<script src="./js/controleurs/viewStatCtrl.js"></script>-->
   </body>
 </html>
