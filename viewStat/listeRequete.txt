@@ -1,0 +1,2 @@
+Liste des dashboard : http://localhost:9200/.kibana/dashboard/_search?pretty
+Liste des visualisation : http://localhost:9200/.kibana/visualization/_search?pretty 
